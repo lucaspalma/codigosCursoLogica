@@ -1,0 +1,43 @@
+<script src="numero.js"></script>
+<script src="http://31da6574.ngrok.io/mostra.js"></script>
+<script src="http://31da6574.ngrok.io/pegaPaisCopa.js"></script>
+<h1>Loteria</h1>
+<button onclick="start()">
+    Start
+</button>
+
+<script>
+var jogo = 0
+function start() {
+    jogo = jogo + 1
+    var listaNumerosMisteriosos = []
+
+    //var vezes = 1 //variável de início/contador
+    //while ( vezes <= 6 ) { //condição para continuar a repetição
+    //  listaNumerosMisteriosos.push( parseInt( Math.random() * 100 ) )
+    //  vezes = vezes + 1 //atualizar o contador 
+    //}
+
+    for( var vezes = 1 ; vezes <= 6 ; vezes++ ) {
+        listaNumerosMisteriosos.push( parseInt( Math.random() * 100 ) )
+    }
+    
+    console.log( listaNumerosMisteriosos )
+    var seuNumero = pegarNumero("Qual foi o número escolhido de 0 a 100")
+    var chances = 0 //contador tentativas
+    while( seuNumero < 0 || seuNumero > 100 ) {
+        chances = chances + 1
+        if(chances == 5) {
+            alert("GAME OVER")
+            break
+        }
+        seuNumero = pegarNumero("Numéro inválido! Qual foi o número escolhido de 0 a 100")
+    }
+    if( listaNumerosMisteriosos.includes(seuNumero) ) {
+        mostra(`Jogo ${jogo} Acertou! Os números eram ${listaNumerosMisteriosos}`)
+    }
+    else {
+        mostra(`Jogo ${jogo} Errou! Os números eram ${listaNumerosMisteriosos}`)
+    }
+}
+</script>

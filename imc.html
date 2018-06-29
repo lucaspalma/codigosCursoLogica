@@ -1,0 +1,12 @@
+<script src="numero.js"></script>
+
+<script>
+mensagem = "Qual o seu peso?"
+var peso = pegarNumero()
+mensagem = "Qual a sua altura?"
+var altura = pegarNumero()
+var imc = peso / ( altura * altura )
+
+document.write( "Olá,<br>O seu imc é" + imc.toFixed(2) )
+
+</script>

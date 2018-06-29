@@ -1,0 +1,69 @@
+<body>
+</body>
+<script src="http://cf6ecfa8.ngrok.io/mostra.js"></script>
+<script src="http://cf6ecfa8.ngrok.io/pegaPaisCopa.js"></script>
+<script>
+    var dinheiro = 10
+    if(dinheiro > 0 && dinheiro <= 100) {
+        mostra("Taxa de 10")
+    }
+    if(dinheiro >= 101 && dinheiro < 200) {
+        mostra("Taxa de 25")
+    }
+    if(dinheiro >= 201) {
+        mostra("Taxa de 35")
+    }
+
+    if(dinheiro > 0 && dinheiro <= 100) {
+        mostra("Taxa de 10")
+    }
+    else if(dinheiro < 200) {
+        mostra("Taxa de 25")
+    }
+    else if(dinheiro < 300) {
+        mostra("Taxa de 35")
+    }
+    else if(dinheiro < 400) {
+        mostra("Taxa de 65")
+    }
+    else {
+        mostra("Taxa de 150")
+    }
+    mostra("==================================================")
+    var copa = 1930
+    while( copa <= 1938 ) {
+        mostra("Copa de " + copa + " - " + pegaPaisCopa(copa) )
+        copa = copa + 4
+    }
+
+    var copa2 = 1950
+    while(copa2 >= 1950 && copa2 <= 2018) {
+        mostra("Copa de " + copa2 + " - " + pegaPaisCopa(copa2) )
+        copa2 = copa2 + 4
+    }
+    mostra("==================================================")
+    var copa = 1930
+    while( copa <= 2018 ) {
+        if(copa == 1942 || copa == 1946) {
+            mostra("Por causa do Hitler, não teve copa em 1942 em 1946" )
+        }
+        else {
+            mostra("Copa de " + copa + " - " + pegaPaisCopa(copa) )
+        }
+
+        copa = copa + 4
+    }
+
+    mostra("==================================================")
+    var copa = 1930
+    while( copa <= 2018 ) {
+        //se copa for diferente de 1942 E 1946
+        if(copa != 1942 && copa != 1946) {
+            mostra("Copa de " + copa + " - " + pegaPaisCopa(copa) )
+        }
+
+        copa = copa + 4
+    }
+
+
+</script>

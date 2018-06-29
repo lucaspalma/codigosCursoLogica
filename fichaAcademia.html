@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+Nome <input id="campoNome" >
+<br> <br>
+Peso <input id="campoPeso" >
+<br> <br>
+Altura  <input id="campoAltura" >
+<br> <br>
+Data de nascimento <input id="campoNascimento" >
+<br> <br>
+<input type="checkbox" id="campoProblemaCardiaco">
+Tem problema cardiaco?
+<br> <br>
+
+<button onclick="criaAluno() " >
+    Cadastrar aluno
+</button>
+
+<script src="numero.js"></script>
+<script src="conversor.js"></script>
+<script src="http://cf6ecfa8.ngrok.io/libIdade.js"></script>
+<script src="http://cf6ecfa8.ngrok.io/mostra.js"></script>
+<script>
+    
+var numeroDaFicha = 0 //contador
+
+function criaAluno() {
+    numeroDaFicha = numeroDaFicha + 1
+    var nome = campoNome.value
+    var peso = parseFloat(campoPeso.value)
+    var altura = parseFloat(campoAltura.value.replace(",", "."))
+    var dataNascimento = campoNascimento.value
+    var dataNascimentoLista = dataNascimento.split("/")
+    var diaNasci = dataNascimentoLista[0]
+    var mesNasci = dataNascimentoLista[1]
+    var anoNasci = dataNascimentoLista[2]
+    var idade = calculaIdade(diaNasci, mesNasci, anoNasci)
+    var mensagemCardiaco
+    var ehCardiaco = campoProblemaCardiaco.checked
+    var ehCrianca = idade < 16
+    //se ehCardiaco OU ehCrianca
+    if( ehCardiaco || ehCrianca ) {
+        mensagemCardiaco = "Precisa de acompanhamento médico"
+    }
+    //se nao ehCardiaco E não ehCrianca
+    else {
+        mensagemCardiaco = "NÃO precisa de acompanhamento médico"
+    }
+
+    //se for primeira vez => numero da ficha for igual 1
+    if( numeroDaFicha == 1 ) {
+        mostra("<h1>Fichas</h1>")
+    }
+
+    mostra(`
+        <hr>
+        Ficha ${numeroDaFicha}
+        <hr>
+        Nome: ${nome} <br>
+        Peso: ${peso.toFixed(3).replace(".", ",")} kg <br>
+        Altura: ${altura.toFixed(2).replace(".", ",")} m <br>
+        Data de nascimento: ${dataNascimento} <br>
+        Idade: ${idade} anos <br>
+        ${mensagemCardiaco}
+    `)
+}
+</script>

@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+
+<script src="numero.js"></script>
+<script src="http://cf6ecfa8.ngrok.io/libRelogio.js"></script>
+
+<h1>Uber</h1>
+<script>
+var distancia = pegarNumero("Qual a distancia percorrida em km")
+
+var velocidadeMedia = 25
+var tempoHora = distancia / velocidadeMedia
+var tempoMinutos = tempoHora * 60
+var precoUber = 2 + (tempoMinutos * 0.26) + (distancia * 1.4)
+
+document.write(`
+    Tempo: ${formataRelogio(tempoMinutos)} <br>
+    Total: R$ ${precoUber.toFixed(2).replace(".", ",")} <br>
+`)
+</script>
+<h1>Carro</h1>
+<script>
+var precoLitroCombustivel = pegarNumero("Qual o preço do litro do combustível")
+var consumoCarro = pegarNumero("Qual o consumo do seu carro?")
+
+var gasolina = distancia * precoLitroCombustivel / consumoCarro
+
+var estacionamento = pegarNumero("Qual o valor do estacionamento?")
+
+var totalCarro = gasolina + estacionamento
+document.write(`
+    Estacionamento: R$ ${estacionamento.toFixed(2).replace(".", ",")} <br>
+    Gasolina: R$ ${gasolina.toFixed(2).replace(".", ",")} <br>
+    Total: R$ ${totalCarro.toFixed(2).replace(".", ",")} <br>
+`)
+</script>
